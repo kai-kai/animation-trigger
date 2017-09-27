@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Demo</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
+  <script type="text/javascript" src="js/script.min.js"></script>
+</head>
+<body>
+  <div class="loadingArea">
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+  </div>
+  <div class="scrollArea">
+    <div class="box4"></div>
+    <div class="box5"></div>
+    <div class="box6"></div>
+    <div class="box7"></div>
+    <div class="box8"></div>
+    <div class="box9"></div>
+  </div>
+  <script type="text/javascript">
+    (function() {
+      window.addEventListener('DOMContentLoaded', function() {
+        var _loadElmArr = document.querySelectorAll('.loadingArea [class^=box]');
+        var _scrollElmArr = document.querySelectorAll('.scrollArea [class^=box]');
+        var _loadArr = [];
+        var _scrollArr = [];
+
+        for(var i = 0; i < _loadElmArr.length; i++) {
+          _loadArr.push({
+            elm: _loadElmArr[i],
+            cName: 'animate'
+          })
+        }
+        for(var i = 0; i < _scrollElmArr.length; i++) {
+          _scrollArr.push({
+            elm: _scrollElmArr[i],
+            cName: 'animate'
+          })
+        }
+
+        new SampleClass({
+          animation: {
+            load: _loadArr,
+            scroll: _scrollArr
+          }
+        });
+      })
+    })();
+  </script>
+</body>
+</html>
