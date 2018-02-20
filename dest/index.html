@@ -23,28 +23,20 @@
   <script type="text/javascript">
     (function() {
       window.addEventListener('DOMContentLoaded', function() {
-        var _loadElmArr = document.querySelectorAll('.loadingArea [class^=box]');
-        var _scrollElmArr = document.querySelectorAll('.scrollArea [class^=box]');
-        var _loadArr = [];
-        var _scrollArr = [];
-
-        for(var i = 0; i < _loadElmArr.length; i++) {
-          _loadArr.push({
-            elm: _loadElmArr[i],
-            cName: 'animate'
-          })
-        }
-        for(var i = 0; i < _scrollElmArr.length; i++) {
-          _scrollArr.push({
-            elm: _scrollElmArr[i],
-            cName: 'animate'
-          })
-        }
-
         new SampleClass({
           animation: {
-            load: _loadArr,
-            scroll: _scrollArr
+            load: [
+              {
+                elm: document.querySelectorAll('.loadingArea [class^=box]'),
+                cName: 'animate'
+              }
+            ],
+            scroll: [
+              {
+                elm: document.querySelectorAll('.scrollArea [class^=box]'),
+                cName: 'animate'
+              }
+            ]
           }
         });
       })

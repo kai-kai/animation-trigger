@@ -4,18 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "gulp": "gulp",
+    "css": "gulp css",
+    "babel": "gulp babel",
+    "eslint": "gulp eslint",
+    "server": "gulp server"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kai-kai/animation-trigger.git"
+    "url": "git+https://github.com/kai-ono/animation-trigger.git"
   },
   "author": "kai-ono",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kai-kai/animation-trigger/issues"
+    "url": "https://github.com/kai-ono/animation-trigger/issues"
   },
-  "homepage": "https://github.com/kai-kai/animation-trigger#readme",
+  "homepage": "https://github.com/kai-ono/animation-trigger#readme",
   "devDependencies": {
     "babel-eslint": "^7.1.1",
     "babel-preset-es2015": "^6.24.1",
@@ -36,5 +40,8 @@
     "precss": "^2.0.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "array-from": "^2.1.1"
   }
 }

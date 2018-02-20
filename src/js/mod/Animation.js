@@ -1,5 +1,7 @@
 'use strict';
 
+const arrayFrom = require('array-from');
+
 /**
  * アニメーション用のクラスを付与するクラスです。
  */
@@ -71,24 +73,29 @@ class Animation {
 
   /**
    * 条件にあった要素にクラスを追加します
-   * @param {Array} array オブジェクトの配列
+   * @param {Array} array コンストラクタで定義したオブジェクトの配列
    * @param {String} type イベントタイプを文字列で指定します（'load' or 'scroll'）
    */
   main(array, type) {
-    var _this = this;
+    const _this = this;
 
     array.forEach(function(obj) {
-      if(
-        typeof obj === 'object' &&
-        typeof obj.animFlag === 'undefined'
-      ) {
-        if(type === 'scroll') {
-          var _winHeight = window.innerHeight;
-          var _scrollVal = _winHeight - _winHeight / 5;
-          if(!_this.isReached(obj.elm.getBoundingClientRect().top, _scrollVal)) return;
+      if (typeof obj === 'object') {
+        let elmArr = (obj.elm.nodeType === 1) ? [obj.elm] : arrayFrom(obj.elm, e => {
+          return e;
+        });
+
+        for (let i = 0; i < elmArr.length; i++) {
+          if (elmArr[i].classList.contains(obj.cName)) continue;
+
+          if (type === 'scroll') {
+            const _winHeight = window.innerHeight;
+            const _scrollVal = _winHeight - _winHeight / 3;
+            if (!_this.isReached(elmArr[i].getBoundingClientRect().top, _scrollVal)) return;
+          }
+
+          elmArr[i].classList.add(obj.cName);
         }
-        obj.elm.classList.add(obj.cName);
-        obj.animFlag = true;
       }
     });
   }
