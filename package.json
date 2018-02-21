@@ -2,7 +2,7 @@
   "name": "animation-trigger",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dest/js/script.js",
   "scripts": {
     "gulp": "gulp",
     "css": "gulp css",
